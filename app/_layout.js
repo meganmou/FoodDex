@@ -19,20 +19,20 @@ export default function HomeLayout() {
         }}
       />
       <Tabs.Screen
-        name="feed"
+        name="messages"
         options={{
-          tabBarLabel: "Feed",
+          tabBarLabel: "Passport",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="flash-sharp" size={size} color={color} />
+            <Ionicons name="map" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="messages"
+        name="feed"
         options={{
-          tabBarLabel: "Messages",
+          tabBarLabel: "Feed",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="chatbox" size={size} color={color} />
+            <Ionicons name="images" size={size} color={color} />
           ),
         }}
       />
