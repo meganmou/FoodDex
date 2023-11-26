@@ -1,10 +1,26 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
+import { useState, useEffect } from "react";
 import { useRouter } from "expo-router";
+import supabase from "../Supabase";
+import { palette } from "../assets/palette";
 
 import { Link } from "expo-router";
 
 export default function Page() {
+  const [data, setData] = useState(null);
   const router = useRouter();
+
+  // useEffect(() => {
+  //   // Fetch data on initial load
+  //   const fetchData = async () => {
+  //     const response = await supabase.from("Recipes").select("*");
+  //     setData(response.data);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  // console.log(data[0].name);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -37,7 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    fontWeight: "bold",
+    color: palette.lightGreen,
   },
   subtitle: {
     fontSize: 36,
