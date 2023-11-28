@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   nameText: {
-    fontSize: 40,
+    fontFamily: "DM Serif Display Regular",
+    fontSize: 30,
     fontWeight: "bold",
   },
   myProfilePic: {

@@ -1,8 +1,8 @@
 import { Tabs } from "expo-router";
-
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function HomeLayout() {
+//hide header; two headers because tab navigator AND stack navigator
+export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -11,6 +11,12 @@ export default function HomeLayout() {
     >
       <Tabs.Screen
         name="index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="home"
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ size, color }) => (
