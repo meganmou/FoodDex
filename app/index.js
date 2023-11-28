@@ -1,77 +1,17 @@
-import { StyleSheet, Text, View, Pressable, Image } from "react-native";
-import { useState, useEffect } from "react";
-import { useRouter } from "expo-router";
-import supabase from "../Supabase";
-import { palette } from "../assets/palette";
+import { Tabs } from "expo-router";
+import { useNavigation } from "expo-router";
+import { useFonts } from "expo-font";
 
-import { Link } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Page() {
-  const [data, setData] = useState(null);
-  const router = useRouter();
-
-  // useEffect(() => {
-  //   // Fetch data on initial load
-  //   const fetchData = async () => {
-  //     const response = await supabase.from("Recipes").select("*");
-  //     setData(response.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // console.log(data[0].name);
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>FoodDex</Text>
-        <Link
-          href={{
-            pathname: "my-profile/my-profile-screen",
-          }}
-          asChild
-        >
-          <Pressable>
-            <Image
-              source={require("../assets/my-profile-pic.png")}
-              style={styles.myProfilePic}
-            />
-          </Pressable>
-        </Link>
-      </View>
-      <View style={styles.trending}></View>
-      <View style={styles.new}></View>
-    </View>
-  );
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    "DM Sans Light": require("../assets/fonts/DMSans-Light.ttf"),
+    "DM Sans Regular": require("../assets/fonts/DMSans-Regular.ttf"),
+    "DM Sans Semibold": require("../assets/fonts/DMSans-SemiBold.ttf"),
+    "DM Serif Display Regular": require("../assets/fonts/DMSerifDisplay-Regular.ttf"),
+    "Nunito Light": require("../assets/fonts/Nunito-Light.ttf"),
+    "Nunito Regular": require("../assets/fonts/Nunito-Regular.ttf"),
+    "Nunito Bold": require("../assets/fonts/Nunito-Bold.ttf"),
+  });
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  title: {
-    fontSize: 40,
-    color: palette.lightGreen,
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-  header: {
-    paddingTop: 30,
-    justifyContent: "space-between",
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  trending: {},
-  new: {},
-  myProfilePic: {
-    resizeMode: "contain",
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-  },
-});
