@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { palette } from "../assets/palette";
 
 //hide header; two headers because tab navigator AND stack navigator
 export default function AppLayout() {
@@ -16,6 +17,12 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
+        name="newCuisine"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="home"
         options={{
           tabBarLabel: "Home",
@@ -25,7 +32,7 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="messages"
+        name="passport"
         options={{
           tabBarLabel: "Passport",
           tabBarIcon: ({ size, color }) => (
