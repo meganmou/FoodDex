@@ -17,12 +17,6 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="newCuisine"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
         name="home"
         options={{
           tabBarLabel: "Home",

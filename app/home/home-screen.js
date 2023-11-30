@@ -19,7 +19,7 @@ import { Link } from "expo-router";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function Page() {
+export default function HomePage() {
   // hide header bar
   const navigation = useNavigation();
   useEffect(() => {
