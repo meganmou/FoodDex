@@ -9,6 +9,7 @@ import {
 import { useState, useEffect } from "react";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { palette } from "../../assets/palette";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -26,12 +27,16 @@ export default function TrendingRecipePage() {
     };
     fetchRecipeInfo();
   }, []);
+
   if (recipeInfo) {
     return (
       <View style={styles.container}>
         <Stack.Screen
           options={{
             title: params.recipeName,
+            headerStyle: {
+              backgroundColor: palette.lightGray,
+            },
           }}
         />
         <ScrollView style={styles.scrollviewStyle}>

@@ -10,32 +10,70 @@ import {
 import { useState, useEffect } from "react";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { SearchBar } from "react-native-elements";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import RecipeListComponent from "../../components/RecipeListComponent";
+import { palette } from "../../assets/palette";
 
 export default function NewCuisinePage() {
   const params = useLocalSearchParams();
-  // access all recipes for a country
+
   [countryRecipeInfo, setCountryRecipeInfo] = useState(null);
+
+  // access all recipes for a country
   useEffect(() => {
-    const fetchCountryRecipeInfo = async () => {
+    const fetchRecipes = async () => {
       const response = await supabase
         .from("Recipes")
         .select("*")
         .eq("cuisine", params.countryName);
       setCountryRecipeInfo(response.data);
     };
-    fetchCountryRecipeInfo();
+    fetchRecipes();
   }, []);
 
+  // filter recipes for a country
+  const filterRecipes = async (currentQuery) => {
+    const response = await supabase
+      .from("Recipes")
+      .select("*")
+      .eq("cuisine", params.countryName)
+      .textSearch("name", `%${currentQuery.replace(" ", "&")}%`);
+    // no support in database for looking for partial text
+    // would need a column of partial strings to search for that
+    // if search query is empty string, then display the original instead of displaying the filtered version
+    //   .or(
+    //     `name:ilike: %${currentQuery}%`,
+    //     `description:ilike: %${currentQuery}%`
+    //   );
+    setCountryRecipeInfo(response.data);
+  };
+
+  // search bar functionality
+  const [searchQuery, setSearchQuery] = useState("");
+
+  //   const handleSubmitSearch = async () => {
+  //     await filterRecipes(searchQuery);
+  //   };
+
+  const onChangeSearch = async (searchQuery) => {
+    setSearchQuery(searchQuery);
+    console.log(searchQuery);
+    await filterRecipes(searchQuery);
+    console.log("hi");
+  };
+
+  //console.log(countryRecipeInfo);
   if (countryRecipeInfo) {
-    //console.log(countryRecipeInfo);
     return (
       <View style={styles.container}>
         <Stack.Screen
           options={{
             title: params.countryName,
+            headerStyle: {
+              backgroundColor: palette.lightGray,
+            },
           }}
         />
         <View style={styles.countryHeader}>
@@ -46,6 +84,20 @@ export default function NewCuisinePage() {
               style={styles.flagPhoto}
             />
           </View>
+        </View>
+        <View style={styles.searchBar}>
+          <SearchBar
+            placeholder="Search for a cuisine, recipe, etc..."
+            onChangeText={onChangeSearch}
+            value={searchQuery}
+            containerStyle={{
+              backgroundColor: "transparent",
+              borderBottomColor: "transparent",
+              borderTopColor: "transparent",
+            }}
+            inputContainerStyle={{ backgroundColor: "white", borderRadius: 10 }}
+            // onSubmitEditing={handleSubmitSearch}
+          />
         </View>
         <FlatList
           data={countryRecipeInfo}
@@ -100,5 +152,9 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     borderRadius: 10,
+  },
+  searchBar: {
+    width: "100%",
+    padding: 10,
   },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-
+import { palette } from "../../assets/palette";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 
 export default function Page() {
@@ -8,6 +8,9 @@ export default function Page() {
       <Stack.Screen
         options={{
           title: "My Profile",
+          headerStyle: {
+            backgroundColor: palette.lightGray,
+          },
         }}
       />
       <View style={styles.nameHeader}>

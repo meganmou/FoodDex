@@ -15,7 +15,7 @@ const TrendingRecipe = ({ name, cuisine, photo }) => {
   return (
     <Link
       href={{
-        pathname: "home/trendingRecipe",
+        pathname: "home/trendingRecipeScreen",
         params: {
           recipeName: name,
         },
