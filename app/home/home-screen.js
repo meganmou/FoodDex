@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "expo-router";
 import supabase from "../../Supabase";
 import { palette } from "../../assets/palette";
-import { Searchbar } from "react-native-paper";
+import { SearchBar } from "react-native-elements";
 import TrendingRecipeComponent from "../../components/TrendingRecipeComponent";
 import NewCuisineComponent from "../../components/NewCuisineComponent";
 import { Link } from "expo-router";
@@ -93,10 +93,16 @@ export default function HomePage() {
         </View>
       </View>
       <View style={styles.searchBar}>
-        <Searchbar
+        <SearchBar
           placeholder="Search for a cuisine, recipe, etc..."
           onChangeText={onChangeSearch}
           value={searchQuery}
+          containerStyle={{
+            backgroundColor: "transparent",
+            borderBottomColor: "transparent",
+            borderTopColor: "transparent",
+          }}
+          inputContainerStyle={{ backgroundColor: "white", borderRadius: 10 }}
         />
       </View>
       <View style={styles.trending}>
