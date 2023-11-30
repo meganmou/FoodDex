@@ -12,7 +12,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function Page() {
+export default function TrendingRecipePage() {
   const params = useLocalSearchParams();
   // access recipe info
   [recipeInfo, setRecipeInfo] = useState(null);

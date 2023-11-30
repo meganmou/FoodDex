@@ -1,5 +1,3 @@
-import { Tabs } from "expo-router";
-import { useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
 
 import Ionicons from "@expo/vector-icons/Ionicons";

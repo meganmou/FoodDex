@@ -15,9 +15,10 @@ const NewCuisine = ({ country, flag }) => {
   return (
     <Link
       href={{
-        pathname: "home/newCuisine",
+        pathname: "home/newCuisineScreen",
         params: {
           countryName: country,
+          flagImage: flag,
         },
       }}
       asChild
