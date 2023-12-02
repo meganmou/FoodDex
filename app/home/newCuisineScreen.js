@@ -22,14 +22,14 @@ export default function NewCuisinePage() {
   [countryRecipeInfo, setCountryRecipeInfo] = useState(null);
 
   // access all recipes for a country
+  const fetchRecipes = async () => {
+    const response = await supabase
+      .from("Recipes")
+      .select("*")
+      .eq("cuisine", params.countryName);
+    setCountryRecipeInfo(response.data);
+  };
   useEffect(() => {
-    const fetchRecipes = async () => {
-      const response = await supabase
-        .from("Recipes")
-        .select("*")
-        .eq("cuisine", params.countryName);
-      setCountryRecipeInfo(response.data);
-    };
     fetchRecipes();
   }, []);
 
@@ -39,7 +39,10 @@ export default function NewCuisinePage() {
       .from("Recipes")
       .select("*")
       .eq("cuisine", params.countryName)
-      .textSearch("name", `%${currentQuery.replace(" ", "&")}%`);
+      .textSearch(
+        "name_description_filters",
+        `%${currentQuery.replace(" ", "&")}%`
+      );
     // no support in database for looking for partial text
     // would need a column of partial strings to search for that
     // if search query is empty string, then display the original instead of displaying the filtered version
@@ -60,8 +63,11 @@ export default function NewCuisinePage() {
   const onChangeSearch = async (searchQuery) => {
     setSearchQuery(searchQuery);
     console.log(searchQuery);
-    await filterRecipes(searchQuery);
-    console.log("hi");
+    if (searchQuery === "") {
+      await fetchRecipes();
+    } else {
+      await filterRecipes(searchQuery);
+    }
   };
 
   //console.log(countryRecipeInfo);
@@ -72,7 +78,7 @@ export default function NewCuisinePage() {
           options={{
             title: params.countryName,
             headerStyle: {
-              backgroundColor: palette.lightGray,
+              backgroundColor: palette.white,
             },
           }}
         />
@@ -87,7 +93,7 @@ export default function NewCuisinePage() {
         </View>
         <View style={styles.searchBar}>
           <SearchBar
-            placeholder="Search for a cuisine, recipe, etc..."
+            placeholder="Search or type filter options"
             onChangeText={onChangeSearch}
             value={searchQuery}
             containerStyle={{
@@ -95,9 +101,20 @@ export default function NewCuisinePage() {
               borderBottomColor: "transparent",
               borderTopColor: "transparent",
             }}
-            inputContainerStyle={{ backgroundColor: "white", borderRadius: 10 }}
+            inputContainerStyle={{
+              backgroundColor: palette.lightGray,
+              borderRadius: 10,
+            }}
             // onSubmitEditing={handleSubmitSearch}
           />
+        </View>
+        <Text style={styles.filterTitle}>Filter Options</Text>
+        <View style={styles.filterOptions}>
+          <Text style={styles.filterText}>Easy | Medium | Hard</Text>
+          <Text style={styles.filterText}>Vegan | Vegetarian</Text>
+          <Text style={styles.filterText}>
+            30 min | Kid friendly | Fan favorite
+          </Text>
         </View>
         <FlatList
           data={countryRecipeInfo}
@@ -120,6 +137,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 24,
+    backgroundColor: palette.white,
   },
   scrollviewStyle: {
     //flexDirection: "column",
@@ -134,7 +152,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   countryTitle: {
-    fontFamily: "DM Serif Display Regular",
+    fontFamily: "SF Display Regular",
     fontSize: 40,
     marginLeft: 10,
   },
@@ -155,6 +173,27 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: "100%",
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+  },
+  filterOptions: {
+    backgroundColor: palette.lightOrange,
     padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    width: "80%",
+    marginTop: 5,
+    marginBottom: 10,
+  },
+  filterTitle: {
+    fontFamily: "SF Display Regular",
+    fontSize: 20,
+  },
+  filterText: {
+    fontFamily: "Nunito Regular",
+    fontSize: 15,
+    color: palette.darkOrange,
+    padding: 3,
   },
 });

@@ -6,9 +6,10 @@ import { palette } from "../assets/palette";
 export default function AppLayout() {
   return (
     <Tabs
-      //initialRouteName="home"
+      initialRouteName="home"
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: palette.olympicGreen,
       }}
     >
       <Tabs.Screen

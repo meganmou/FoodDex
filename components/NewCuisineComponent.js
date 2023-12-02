@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
   countryText: {
     fontFamily: "Nunito Bold",
     fontSize: 15,
-    padding: 10,
+    marginTop: 5,
   },
 });

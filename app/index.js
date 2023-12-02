@@ -1,6 +1,6 @@
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { useRouter, useRootNavigationState } from "expo-router";
+import { useRouter, useRootNavigationState, Redirect } from "expo-router";
 
 export default function App() {
   const router = useRouter();
@@ -13,7 +13,14 @@ export default function App() {
     "Nunito Light": require("../assets/fonts/Nunito-Light.ttf"),
     "Nunito Regular": require("../assets/fonts/Nunito-Regular.ttf"),
     "Nunito Bold": require("../assets/fonts/Nunito-Bold.ttf"),
+    "SF Display Light": require("../assets/fonts/SFUIDisplay-Light.ttf"),
+    "SF Display Regular": require("../assets/fonts/FontsFree-Net-SFProDisplay-Regular.ttf"),
+    "SF Display Bold": require("../assets/fonts/SFUIDisplay-Bold.ttf"),
   });
+  if (fontsLoaded) {
+    return <Redirect href="/home/home-screen/" />;
+  }
+
   //return router.push("home/home-screen");
 }
 //put useEffect that routes you to home; call some expo router function

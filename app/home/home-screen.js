@@ -71,12 +71,6 @@ export default function HomePage() {
       <View style={styles.header}>
         <Text style={styles.titleText}>FoodDex</Text>
         <View style={styles.topButtons}>
-          <Pressable>
-            <View style={styles.friendsLink}>
-              <Text style={styles.friendsText}>4</Text>
-              <Text style={styles.friendsText}>friends</Text>
-            </View>
-          </Pressable>
           <Link
             href={{
               pathname: "/home/my-profile-screen",
@@ -102,11 +96,18 @@ export default function HomePage() {
             borderBottomColor: "transparent",
             borderTopColor: "transparent",
           }}
-          inputContainerStyle={{ backgroundColor: "white", borderRadius: 10 }}
+          inputContainerStyle={{
+            backgroundColor: palette.lightGray,
+            borderRadius: 10,
+          }}
         />
       </View>
       <View style={styles.trending}>
-        <Text style={styles.subtitleText}>Trending Recipes</Text>
+        <View style={styles.subtitleRow}>
+          <Text style={styles.subtitleText}>Trending Recipes</Text>
+          <Text style={styles.subText}>see all ➤</Text>
+        </View>
+
         <FlatList
           data={trending_recipes}
           renderItem={({ item }) => (
@@ -122,14 +123,16 @@ export default function HomePage() {
       </View>
       <View style={styles.new}>
         <Text style={styles.subtitleText}>New Cuisines for You</Text>
-        <FlatList
-          data={new_cuisines}
-          renderItem={({ item }) => (
-            <NewCuisineComponent country={item.country} flag={item.flag} />
-          )}
-          keyExtractor={(item) => item.country}
-          horizontal
-        />
+        <View style={styles.newCuisineView}>
+          <FlatList
+            data={new_cuisines}
+            renderItem={({ item }) => (
+              <NewCuisineComponent country={item.country} flag={item.flag} />
+            )}
+            keyExtractor={(item) => item.country}
+            horizontal
+          />
+        </View>
       </View>
     </View>
   );
@@ -139,7 +142,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: palette.lightGray,
+    backgroundColor: palette.white,
+    borderBottomColor: "gray",
+    borderBottomWidth: StyleSheet.hairlineWidth,
     paddingTop: 50,
   },
   header: {
@@ -152,20 +157,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   titleText: {
-    fontFamily: "DM Serif Display Regular",
+    // fontFamily: "DM Serif Display Regular",
+    fontFamily: "SF Display Bold",
     fontSize: 40,
-    color: palette.lightGreen,
+    color: palette.olympicGreen,
   },
   topButtons: {
     flexDirection: "row",
-  },
-  friendsLink: {
-    alignItems: "center",
-  },
-  friendsText: {
-    fontFamily: "Nunito Regular",
-    fontSize: 17,
-    paddingRight: 5,
   },
   myProfilePic: {
     resizeMode: "contain",
@@ -185,12 +183,29 @@ const styles = StyleSheet.create({
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  subtitleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   subtitleText: {
-    fontFamily: "DM Serif Display Regular",
+    fontFamily: "SF Display Regular",
     fontSize: 27,
+  },
+  subText: {
+    fontFamily: "Nunito Regular",
+    fontSize: 15,
   },
   new: {
     width: "100%",
     padding: 10,
+  },
+  newCuisineView: {
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor: palette.lightGray,
+    borderRadius: 15,
+    marginTop: 20,
   },
 });
