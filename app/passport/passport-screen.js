@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, Button } from "react-native";
+import { useState, useEffect } from "react";
+import { router, Link, useNavigation } from "expo-router";
 
-import { router, Link } from "expo-router";
-
-export default function Page() {
+export default function PassportPage() {
+  // hide header bar
+  const navigation = useNavigation();
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>Messages</Text>
+        <Text style={styles.title}>Passport</Text>
         <Text style={styles.subtitle}>This is the first page of your app.</Text>
         <Link
           href={{

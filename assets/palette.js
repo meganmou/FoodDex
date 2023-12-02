@@ -10,4 +10,8 @@ export const palette = {
   bronze: "#D0863E",
   silver: "#C0C0C0",
   gold: "#FFD702",
+  olympicBlue: "#0081C8",
+  olympicGreen: "#00A651",
+  olympicRed: "#EE334E",
+  olympicYellow: "#FCB131",
 };

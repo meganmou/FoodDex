@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   cuisineText: {
     fontFamily: "Nunito Regular",
-    fontSize: 15,
+    fontSize: 20,
   },
   imageContainer: {
     width: "100%",

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   nameText: {
-    fontFamily: "DM Serif Display Regular",
+    fontFamily: "SF Display Regular",
     fontSize: 30,
     fontWeight: "bold",
   },

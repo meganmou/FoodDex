@@ -35,7 +35,7 @@ export default function TrendingRecipePage() {
           options={{
             title: params.recipeName,
             headerStyle: {
-              backgroundColor: palette.lightGray,
+              backgroundColor: palette.white,
             },
           }}
         />
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
+    backgroundColor: palette.white,
   },
   recipePhoto: {
     width: windowWidth * 0.9,
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     //backgroundColor: "green",
   },
   recipeTitle: {
-    fontFamily: "DM Serif Display Regular",
+    fontFamily: "SF Display Regular",
     fontSize: 35,
   },
   recipeCuisine: {

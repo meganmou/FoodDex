@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
 
-export default function MessagesLayout() {
+export default function PassportLayout() {
   return <Stack />;
 }
