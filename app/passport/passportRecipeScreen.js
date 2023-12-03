@@ -79,7 +79,7 @@ export default function TrendingRecipePage() {
           <View style={styles.completedButton}>
             <Link
               href={{
-                pathname: "home/completedTrendingRecipeScreen",
+                pathname: "passport/completedPassportRecipeScreen",
                 params: {
                   name: recipeInfo[0].name,
                   photo: recipeInfo[0].completed_photo,
