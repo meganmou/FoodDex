@@ -1,6 +1,10 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { router, Link, useNavigation } from "expo-router";
+import { palette } from "../../assets/palette";
+import PassportCuisineComponent from "../../components/PassportCuisineComponent";
+import supabase from "../../Supabase";
+import { SearchBar } from "react-native-elements";
 
 export default function PassportPage() {
   // hide header bar
@@ -8,31 +12,81 @@ export default function PassportPage() {
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
+
+  // access cuisine data
+  [cuisineData, setCuisineData] = useState(null);
+  const fetchCuisineData = async () => {
+    const response = await supabase.from("Cuisine Flags").select("*");
+    setCuisineData(response.data);
+  };
+  useEffect(() => {
+    fetchCuisineData();
+  }, []);
+  const filterCuisineData = async (currentQuery) => {
+    const response = await supabase
+      .from("Cuisine Flags")
+      .select("*")
+      .textSearch("country", `%${currentQuery.replace(" ", "&")}%`);
+    setCuisineData(response.data);
+  };
+
+  // search bar functionality
+  const [searchQuery, setSearchQuery] = useState("");
+
+  //   const handleSubmitSearch = async () => {
+  //     await filterRecipes(searchQuery);
+  //   };
+
+  const onChangeSearch = async (searchQuery) => {
+    setSearchQuery(searchQuery);
+    console.log(searchQuery);
+    if (searchQuery === "") {
+      //console.log("fetch");
+      await fetchCuisineData();
+    } else {
+      //console.log("filter");
+      await filterCuisineData(searchQuery);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Passport</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
-        <Link
-          href={{
-            pathname: "/messages/sample",
-            params: {
-              user: "Alan",
-            },
-          }}
-        >
-          Go to sample message for Alan
-        </Link>
-        <Link
-          href={{
-            pathname: "/messages/sample",
-            params: {
-              user: "James",
-            },
-          }}
-        >
-          Go to sample message for James
-        </Link>
+      <View style={styles.header}>
+        <Text style={styles.titleText}>My Passport</Text>
+        <View style={styles.searchBar}>
+          <SearchBar
+            placeholder="Search"
+            onChangeText={onChangeSearch}
+            value={searchQuery}
+            containerStyle={{
+              backgroundColor: "transparent",
+              borderBottomColor: "transparent",
+              borderTopColor: "transparent",
+            }}
+            inputContainerStyle={{
+              backgroundColor: palette.lightGray,
+              borderRadius: 10,
+            }}
+            // onSubmitEditing={handleSubmitSearch}
+          />
+        </View>
+      </View>
+
+      <View style={styles.new}>
+        <View style={styles.newCuisineView}>
+          <FlatList
+            data={cuisineData}
+            numColumns={3}
+            renderItem={({ item }) => (
+              <PassportCuisineComponent
+                country={item.country}
+                flag={item.flag}
+              />
+            )}
+            key={(item) => item.country}
+            keyExtractor={(item) => item.country}
+          />
+        </View>
       </View>
     </View>
   );
@@ -42,21 +96,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    padding: 24,
-    backgroundColor: "pink",
+    backgroundColor: palette.white,
+    borderBottomColor: "gray",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingTop: 50,
   },
-  main: {
-    flex: 1,
+  titleText: {
+    fontFamily: "DM Serif Display Regular",
+    fontSize: 30,
+    color: palette.black,
+  },
+  header: {
     justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
+    width: "100%",
+    alignItems: "center",
+    borderBottomColor: "gray",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    padding: 10,
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
+  searchBar: {
+    width: "100%",
+    padding: 10,
   },
 });

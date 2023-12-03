@@ -13,10 +13,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { SearchBar } from "react-native-elements";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-import NewCuisineRecipeListComponent from "../../components/NewCuisineRecipeListComponent";
+import PassportRecipeListComponent from "../../components/PassportRecipeListComponent";
 import { palette } from "../../assets/palette";
 
-export default function NewCuisinePage() {
+export default function PassportCuisinePage() {
   const params = useLocalSearchParams();
 
   [countryRecipeInfo, setCountryRecipeInfo] = useState(null);
@@ -119,7 +119,7 @@ export default function NewCuisinePage() {
         <FlatList
           data={countryRecipeInfo}
           renderItem={({ item }) => (
-            <NewCuisineRecipeListComponent
+            <PassportRecipeListComponent
               name={item.name}
               photo={item.photo}
               description={item.description}

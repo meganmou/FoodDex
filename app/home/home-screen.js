@@ -86,26 +86,9 @@ export default function HomePage() {
           </Link>
         </View>
       </View>
-      <View style={styles.searchBar}>
-        <SearchBar
-          placeholder="Search for a cuisine, recipe, etc..."
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-          containerStyle={{
-            backgroundColor: "transparent",
-            borderBottomColor: "transparent",
-            borderTopColor: "transparent",
-          }}
-          inputContainerStyle={{
-            backgroundColor: palette.lightGray,
-            borderRadius: 10,
-          }}
-        />
-      </View>
       <View style={styles.trending}>
         <View style={styles.subtitleRow}>
           <Text style={styles.subtitleText}>Trending Recipes</Text>
-          <Text style={styles.subText}>see all ➤</Text>
         </View>
 
         <FlatList
@@ -122,7 +105,9 @@ export default function HomePage() {
         />
       </View>
       <View style={styles.new}>
-        <Text style={styles.subtitleText}>New Cuisines for You</Text>
+        <View style={styles.subtitleRow}>
+          <Text style={styles.subtitleText}>New Cuisines for You</Text>
+        </View>
         <View style={styles.newCuisineView}>
           <FlatList
             data={new_cuisines}
@@ -155,10 +140,11 @@ const styles = StyleSheet.create({
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
     padding: 10,
+    marginBottom: 30,
   },
   titleText: {
-    // fontFamily: "DM Serif Display Regular",
-    fontFamily: "SF Display Bold",
+    fontFamily: "DM Serif Display Regular",
+    //fontFamily: "SF Display Bold",
     fontSize: 40,
     color: palette.olympicGreen,
   },
@@ -171,10 +157,6 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 20,
   },
-  searchBar: {
-    width: "100%",
-    padding: 10,
-  },
   trending: {
     // flex: 1,
     height: windowHeight * 0.4,
@@ -182,6 +164,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
+    marginBottom: 30,
   },
   subtitleRow: {
     flexDirection: "row",
@@ -189,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   subtitleText: {
-    fontFamily: "SF Display Regular",
+    fontFamily: "DM Serif Display Regular",
     fontSize: 27,
   },
   subText: {
