@@ -83,8 +83,11 @@ export default function TrendingRecipePage() {
                 params: {
                   name: recipeInfo[0].name,
                   photo: recipeInfo[0].completed_photo,
-                  flag: recipeInfo[0].flag,
-                  country: recipeInfo[0].cuisine,
+                  regularFlag: recipeInfo[0].flag,
+                  bronzeFlag: recipeInfo[0].bronze_flag,
+                  silverFlag: recipeInfo[0].silver_flag,
+                  goldFlag: recipeInfo[0].gold_flag,
+                  cuisine: recipeInfo[0].cuisine,
                 },
               }}
               asChild
@@ -154,7 +157,7 @@ const styles = StyleSheet.create({
   completedButton: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: palette.olympicBlue,
+    backgroundColor: palette.olympicGreen,
     width: windowWidth * 0.5,
     height: windowHeight * 0.05,
     borderRadius: 10,

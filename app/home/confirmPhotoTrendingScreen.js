@@ -8,46 +8,49 @@ import {
   Pressable,
 } from "react-native";
 import { useState, useEffect, useContext } from "react";
+import { useNavigation } from "expo-router";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { palette } from "../../assets/palette";
 import BadgeContext from "../../BadgeContext";
-
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function completedTrendingRecipePage() {
+export default function confirmTrendingRecipePage() {
   const params = useLocalSearchParams();
-  let [recipesCompleted, setRecipesCompleted] = useState(0);
+
   const badgeContext = useContext(BadgeContext);
   if (params.cuisine === "Mexico") {
-    [recipesCompleted, setRecipesCompleted] = badgeContext.mexicoCompleted;
+    console.log(badgeContext.mexicoCompleted[0]);
   } else if (params.cuisine === "India") {
-    [recipesCompleted, setRecipesCompleted] = badgeContext.indiaCompleted;
+    console.log(badgeContext.indiaCompleted[0]);
   } else if (params.cuisine === "Italy") {
-    [recipesCompleted, setRecipesCompleted] = badgeContext.italyCompleted;
+    console.log(badgeContext.italyCompleted[0]);
   } else if (params.cuisine === "Turkey") {
-    [recipesCompleted, setRecipesCompleted] = badgeContext.turkeyCompleted;
+    console.log(badgeContext.turkeyCompleted[0]);
   } else if (params.cuisine === "Japan") {
-    [recipesCompleted, setRecipesCompleted] = badgeContext.japanCompleted;
+    console.log(badgeContext.japanCompleted[0]);
   }
 
   return (
     <View style={styles.container}>
       <Stack.Screen
         options={{
-          title: "Take A Photo!",
+          title: "",
           headerStyle: {
-            backgroundColor: palette.black,
+            backgroundColor: palette.white,
           },
-          headerTintColor: palette.white,
         }}
       />
+      <View style={styles.messageText}>
+        <Text style={styles.congratsText}>Congrats on making</Text>
+        <Text style={styles.nameText}>{params.name}</Text>
+      </View>
       <Image source={{ uri: params.photo }} style={styles.recipePhoto} />
       <View style={styles.takePhoto}>
         <Link
           href={{
-            pathname: "home/confirmPhotoTrendingScreen",
+            pathname: "home/badgeEarnedTrendingScreen",
             params: {
               name: params.name,
               photo: params.photo,
@@ -60,9 +63,9 @@ export default function completedTrendingRecipePage() {
           }}
           asChild
         >
-          <Pressable onPress={() => setRecipesCompleted(recipesCompleted + 1)}>
+          <Pressable>
             <Image
-              source={require("../../assets/camera-button-2.png")}
+              source={require("../../assets/check-mark.png")}
               style={styles.buttonPic}
             />
           </Pressable>
@@ -77,18 +80,31 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
-    backgroundColor: palette.black,
+    backgroundColor: palette.white,
+  },
+  messageText: {
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  congratsText: {
+    fontFamily: "Nunito Regular",
+    fontSize: 17,
+  },
+  nameText: {
+    fontFamily: "DM Serif Display Regular",
+    fontSize: 25,
   },
   recipePhoto: {
     width: windowWidth * 0.9,
-    height: windowHeight * 0.65,
+    height: windowHeight * 0.6,
   },
   takePhoto: {
     alignItems: "center",
   },
   buttonPic: {
     resizeMode: "contain",
-    height: 120,
-    width: 120,
+    height: 55,
+    width: 55,
+    marginTop: 5,
   },
 });
