@@ -7,7 +7,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SearchBar } from "react-native-elements";
@@ -15,9 +15,48 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import PassportRecipeListComponent from "../../components/PassportRecipeListComponent";
 import { palette } from "../../assets/palette";
+import BadgeContext from "../../BadgeContext";
 
 export default function PassportCuisinePage() {
   const params = useLocalSearchParams();
+
+  let [recipesCompleted, setRecipesCompleted] = useState(0);
+  const badgeContext = useContext(BadgeContext);
+
+  // useContext
+  if (params.countryName === "Mexico") {
+    [recipesCompleted, setRecipesCompleted] = badgeContext.mexicoCompleted;
+  } else if (params.countryName === "India") {
+    [recipesCompleted, setRecipesCompleted] = badgeContext.indiaCompleted;
+  } else if (params.countryName === "Italy") {
+    [recipesCompleted, setRecipesCompleted] = badgeContext.italyCompleted;
+  } else if (params.countryName === "Turkey") {
+    [recipesCompleted, setRecipesCompleted] = badgeContext.turkeyCompleted;
+  } else if (params.countryName === "Japan") {
+    [recipesCompleted, setRecipesCompleted] = badgeContext.japanCompleted;
+  }
+
+  let flagUrl = params.regularFlag;
+  let badgeLevel = "";
+  let badgeColor = palette.black;
+  let badgeBorderColor = "gray";
+  let badgeBorderWidth = StyleSheet.hairlineWidth;
+  if (recipesCompleted === 1) {
+    flagUrl = params.bronzeFlag;
+    badgeLevel = "Bronze";
+    badgeColor = palette.bronze;
+    badgeBorderWidth = 0;
+  } else if (recipesCompleted === 2) {
+    flagUrl = params.silverFlag;
+    badgeLevel = "Silver";
+    badgeColor = palette.silver;
+    badgeBorderWidth = 0;
+  } else if (recipesCompleted === 3) {
+    flagUrl = params.goldFlag;
+    badgeLevel = "Gold";
+    badgeColor = palette.gold;
+    badgeBorderWidth = 0;
+  }
 
   [countryRecipeInfo, setCountryRecipeInfo] = useState(null);
 
@@ -86,8 +125,14 @@ export default function PassportCuisinePage() {
           <Text style={styles.countryTitle}>{params.countryName}</Text>
           <View style={styles.imageContainer}>
             <Image
-              source={{ uri: params.flagImage }}
-              style={styles.flagPhoto}
+              source={{ uri: flagUrl }}
+              style={[
+                styles.flagPhoto,
+                {
+                  borderWidth: badgeBorderWidth,
+                  borderColor: badgeBorderColor,
+                },
+              ]}
             />
           </View>
         </View>
@@ -146,10 +191,11 @@ const styles = StyleSheet.create({
   countryHeader: {
     width: "100%",
     flexDirection: "row",
-    alignItems: "center",
+    //alignItems: "center",
     justifyContent: "space-between",
-    borderBottomColor: "gray",
-    borderBottomWidth: 1,
+    // borderBottomColor: "gray",
+    // borderBottomWidth: 1,
+    //backgroundColor: "red",
   },
   countryTitle: {
     fontFamily: "DM Serif Display Regular",
@@ -157,25 +203,25 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   imageContainer: {
-    width: windowWidth * 0.15,
-    height: windowHeight * 0.05,
+    width: windowWidth * 0.17,
+    height: windowHeight * 0.07,
     // paddingLeft: 5,
     //backgroundColor: "green",
     justifyContent: "flex-start",
-    marginBottom: 15,
-    marginRight: 10,
+    //marginBottom: 15,
   },
   flagPhoto: {
     // resizeMode: "contain",
     height: "100%",
     width: "100%",
     borderRadius: 10,
+    aspectRatio: 1,
   },
   searchBar: {
     width: "100%",
     paddingLeft: 10,
     paddingRight: 10,
-    paddingTop: 10,
+    marginBottom: 5,
   },
   filterOptions: {
     backgroundColor: palette.lightOrange,

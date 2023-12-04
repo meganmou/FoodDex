@@ -106,13 +106,19 @@ export default function HomePage() {
       </View>
       <View style={styles.new}>
         <View style={styles.subtitleRow}>
-          <Text style={styles.subtitleText}>New Cuisines for You</Text>
+          <Text style={styles.subtitleText}>Top Cuisines for You</Text>
         </View>
         <View style={styles.newCuisineView}>
           <FlatList
             data={new_cuisines}
             renderItem={({ item }) => (
-              <NewCuisineComponent country={item.country} flag={item.flag} />
+              <NewCuisineComponent
+                country={item.country}
+                regularFlag={item.flag}
+                bronzeFlag={item.bronze_flag}
+                silverFlag={item.silver_flag}
+                goldFlag={item.gold_flag}
+              />
             )}
             keyExtractor={(item) => item.country}
             horizontal

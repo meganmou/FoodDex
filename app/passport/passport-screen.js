@@ -80,7 +80,10 @@ export default function PassportPage() {
             renderItem={({ item }) => (
               <PassportCuisineComponent
                 country={item.country}
-                flag={item.flag}
+                regularFlag={item.flag}
+                bronzeFlag={item.bronze_flag}
+                silverFlag={item.silver_flag}
+                goldFlag={item.gold_flag}
               />
             )}
             key={(item) => item.country}
