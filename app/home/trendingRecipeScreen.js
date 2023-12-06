@@ -133,12 +133,14 @@ const styles = StyleSheet.create({
     //backgroundColor: "green",
   },
   recipeTitle: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 35,
+    fontFamily: "Dongle Regular",
+    fontSize: 45,
+    //backgroundColor: "red",
   },
   recipeCuisine: {
     fontFamily: "Nunito Regular",
     fontSize: 20,
+    //backgroundColor: "orange",
   },
   recipeAllInfoText: {
     fontFamily: "Nunito Regular",

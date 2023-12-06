@@ -13,9 +13,9 @@ export default function App() {
     "Nunito Light": require("../assets/fonts/Nunito-Light.ttf"),
     "Nunito Regular": require("../assets/fonts/Nunito-Regular.ttf"),
     "Nunito Bold": require("../assets/fonts/Nunito-Bold.ttf"),
-    "SF Display Light": require("../assets/fonts/SFUIDisplay-Light.ttf"),
-    "SF Display Regular": require("../assets/fonts/FontsFree-Net-SFProDisplay-Regular.ttf"),
-    "SF Display Bold": require("../assets/fonts/SFUIDisplay-Bold.ttf"),
+    "Dongle Light": require("../assets/fonts/Dongle-Light.ttf"),
+    "Dongle Regular": require("../assets/fonts/Dongle-Regular.ttf"),
+    "Dongle Bold": require("../assets/fonts/Dongle-Bold.ttf"),
   });
   if (fontsLoaded) {
     return <Redirect href="/home/home-screen/" />;

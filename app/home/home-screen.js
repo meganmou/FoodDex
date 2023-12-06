@@ -69,7 +69,13 @@ export default function HomePage() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.titleText}>FoodDex</Text>
+        <View style={styles.logoContainer}>
+          <Image
+            source={require("../../assets/croissant.png")}
+            style={styles.logoPic}
+          />
+          <Text style={styles.titleText}>FoodDex</Text>
+        </View>
         <View style={styles.topButtons}>
           <Link
             href={{
@@ -134,8 +140,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: palette.white,
-    borderBottomColor: "gray",
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    // borderBottomColor: "gray",
+    // borderBottomWidth: StyleSheet.hairlineWidth,
     paddingTop: 50,
   },
   header: {
@@ -145,13 +151,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    padding: 10,
-    marginBottom: 30,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginBottom: 20,
+  },
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  logoPic: {
+    resizeMode: "contain",
+    height: 55,
+    width: 55,
+    marginBottom: 7,
   },
   titleText: {
-    fontFamily: "DM Serif Display Regular",
+    fontFamily: "Dongle Regular",
     //fontFamily: "SF Display Bold",
-    fontSize: 40,
+    fontSize: 55,
     color: palette.olympicGreen,
   },
   topButtons: {
@@ -162,6 +179,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
+    marginBottom: 10,
   },
   trending: {
     // flex: 1,
@@ -170,7 +188,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginBottom: 30,
+    marginBottom: 20,
   },
   subtitleRow: {
     flexDirection: "row",
@@ -178,8 +196,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   subtitleText: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 27,
+    fontFamily: "Dongle Regular",
+    fontSize: 40,
   },
   subText: {
     fontFamily: "Nunito Regular",
@@ -195,6 +213,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: palette.lightGray,
     borderRadius: 15,
-    marginTop: 20,
+    marginTop: 10,
   },
 });

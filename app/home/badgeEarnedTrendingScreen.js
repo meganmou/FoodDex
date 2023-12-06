@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   earnedText: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 30,
+    fontFamily: "Dongle Regular",
+    fontSize: 40,
   },
   subtextContainer: {
     alignItems: "center",
