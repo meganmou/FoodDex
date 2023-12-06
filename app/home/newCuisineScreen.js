@@ -198,8 +198,8 @@ const styles = StyleSheet.create({
     //backgroundColor: "red",
   },
   countryTitle: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 40,
+    fontFamily: "Dongle Regular",
+    fontSize: 50,
     marginLeft: 10,
   },
   imageContainer: {
@@ -233,8 +233,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   filterTitle: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 20,
+    fontFamily: "Dongle Regular",
+    fontSize: 30,
   },
   filterText: {
     fontFamily: "Nunito Regular",

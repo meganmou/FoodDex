@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "white",
+    backgroundColor: palette.lightGray,
     borderRadius: 10,
     //borderColor: "red",
     //borderWidth: 2,

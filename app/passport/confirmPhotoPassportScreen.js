@@ -89,12 +89,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   nameText: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 25,
+    fontFamily: "Dongle Regular",
+    fontSize: 35,
   },
   recipePhoto: {
     width: windowWidth * 0.9,
-    height: windowHeight * 0.6,
+    height: windowHeight * 0.57,
   },
   takePhoto: {
     alignItems: "center",

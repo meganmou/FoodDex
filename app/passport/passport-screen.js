@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: palette.white,
-    borderBottomColor: "gray",
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    // borderBottomColor: "gray",
+    // borderBottomWidth: StyleSheet.hairlineWidth,
     paddingTop: 50,
   },
   titleText: {
-    fontFamily: "DM Serif Display Regular",
-    fontSize: 30,
+    fontFamily: "Dongle Regular",
+    fontSize: 40,
     color: palette.black,
   },
   header: {
@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: "100%",
-    padding: 10,
+    padding: 5,
   },
 });
