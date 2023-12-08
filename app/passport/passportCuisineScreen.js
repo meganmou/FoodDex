@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    paddingTop: 24,
+    paddingTop: windowWidth * 0.065,
     backgroundColor: palette.white,
   },
   scrollviewStyle: {
@@ -219,13 +219,13 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: "100%",
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: windowWidth * 0.03,
+    paddingRight: windowWidth * 0.03,
     marginBottom: 5,
   },
   filterOptions: {
     backgroundColor: palette.lightOrange,
-    padding: 10,
+    padding: windowWidth * 0.03,
     borderRadius: 10,
     alignItems: "center",
     width: "80%",
@@ -240,6 +240,6 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito Regular",
     fontSize: 15,
     color: palette.darkOrange,
-    padding: 3,
+    padding: windowWidth * 0.01,
   },
 });

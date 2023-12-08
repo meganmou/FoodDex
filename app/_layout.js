@@ -43,12 +43,12 @@ export default function AppLayout() {
           screenOptions={{
             headerShown: false,
             tabBarActiveTintColor: palette.olympicGreen,
-            tabBarInactiveTintColor: palette.white,
-            tabBarActiveBackgroundColor: "#C2E1C1",
-            tabBarInactiveBackgroundColor: "#C2E1C1",
+            //tabBarInactiveTintColor: palette.gray,
+            //tabBarActiveBackgroundColor: "#C2E1C1",
+            //tabBarInactiveBackgroundColor: "#C2E1C1",
             tabBarStyle: {
               height: 78, // TODO: this is hardcoded (:
-              backgroundColor: "#C2E1C1",
+              //backgroundColor: "#C2E1C1",
             },
           }}
         >

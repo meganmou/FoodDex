@@ -119,12 +119,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: palette.white,
     flex: 1,
-    padding: 24,
+    padding: windowWidth * 0.065,
   },
   profileInfo: {
     flexDirection: "row",
     alignItems: "center",
-    paddingBottom: 10,
+    paddingBottom: windowWidth * 0.03,
   },
   profileName: {
     fontFamily: "Dongle Regular",
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
+    padding: windowWidth * 0.03,
     width: windowWidth * 0.875,
     borderRadius: 10,
     borderColor: palette.darkGray,

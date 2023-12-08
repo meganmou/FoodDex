@@ -23,7 +23,7 @@ import { palette } from "../../assets/palette";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function trendingPostPage() {
+export default function uploadedPostPage() {
   const params = useLocalSearchParams();
 
   const [isWriting, setWritingStatus] = useState(true);

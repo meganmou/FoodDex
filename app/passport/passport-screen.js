@@ -1,10 +1,20 @@
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  Dimensions,
+} from "react-native";
 import { useState, useEffect } from "react";
 import { router, Link, useNavigation } from "expo-router";
 import { palette } from "../../assets/palette";
 import PassportCuisineComponent from "../../components/PassportCuisineComponent";
 import supabase from "../../Supabase";
 import { SearchBar } from "react-native-elements";
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 export default function PassportPage() {
   // hide header bar
@@ -99,10 +109,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    //backgroundColor: "#FEFFEF",
+    backgroundColor: palette.white,
     // borderBottomColor: "gray",
     // borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingTop: 50,
+    paddingTop: windowHeight * 0.06,
   },
   titleText: {
     fontFamily: "Dongle Regular",
@@ -115,10 +125,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    padding: 10,
+    padding: windowWidth * 0.03,
   },
   searchBar: {
     width: "100%",
-    padding: 5,
+    padding: windowWidth * 0.015,
   },
 });

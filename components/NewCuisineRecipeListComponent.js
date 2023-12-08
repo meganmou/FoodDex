@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.15,
     justifyContent: "space-evenly",
     alignItems: "center",
-    padding: 15,
+    padding: windowWidth * 0.035,
     backgroundColor: palette.lightGray,
     borderRadius: 10,
     //borderColor: "red",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   recipeInfo: {
     alignItems: "flex-start",
     width: "60%",
-    padding: 15,
+    padding: windowWidth * 0.035,
   },
   recipeTitle: {
     fontFamily: "Nunito Bold",

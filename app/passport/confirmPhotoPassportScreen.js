@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    padding: 24,
+    padding: windowWidth * 0.065,
     backgroundColor: palette.white,
   },
   messageText: {
