@@ -84,7 +84,10 @@ export default function badgeEarnedPage() {
         <View style={styles.buttons}>
           <Link
             href={{
-              pathname: "passport/passport-screen",
+              pathname: "passport/makePassportPostScreen",
+              params: {
+                postPhoto: params.photo,
+              },
             }}
             asChild
           >

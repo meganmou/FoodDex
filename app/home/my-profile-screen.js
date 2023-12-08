@@ -5,17 +5,23 @@ import {
   Image,
   Dimensions,
   Pressable,
+  FlatList,
 } from "react-native";
 import { palette } from "../../assets/palette";
 import { router, Link, useLocalSearchParams, Stack } from "expo-router";
 import { useContext } from "react";
+import PostListComponent from "../../components/PostListComponent";
 import BadgeContext from "../../BadgeContext";
+import PostContext from "../../PostContext";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function MyProfilePage() {
   const badgeContext = useContext(BadgeContext);
+  const postContext = useContext(PostContext);
+  let [curPosts, setPostArray] = postContext;
+  let numPosts = curPosts.length;
 
   let numBadges =
     badgeContext.mexicoCompleted[0] +
@@ -23,8 +29,6 @@ export default function MyProfilePage() {
     badgeContext.italyCompleted[0] +
     badgeContext.turkeyCompleted[0] +
     badgeContext.japanCompleted[0];
-
-  //console.log(numBadges);
 
   return (
     <View style={styles.container}>
@@ -40,11 +44,13 @@ export default function MyProfilePage() {
         <Text style={styles.nameText}>James Landay</Text>
         <View style={styles.infoHeader}>
           <Image
-            source={require("../../assets/my-profile-pic.png")}
+            source={{
+              uri: "https://kvdmzxoxtrgkzrqxxomw.supabase.co/storage/v1/object/sign/profile_photos/james.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9maWxlX3Bob3Rvcy9qYW1lcy5qcGVnIiwiaWF0IjoxNzAxOTIwMDgxLCJleHAiOjE3MzM0NTYwODF9.5z1qMI8G25oM4gJffaLVdEIycsQ6lbppjRs3d7ImxLE&t=2023-12-07T03%3A34%3A41.674Z",
+            }}
             style={styles.myProfilePic}
           />
           <View style={styles.profileInfo}>
-            <Text style={styles.profileText}>0</Text>
+            <Text style={styles.profileText}>{numPosts}</Text>
             <Text style={styles.profileText}>Posts</Text>
           </View>
           <Link
@@ -74,6 +80,23 @@ export default function MyProfilePage() {
             </Pressable>
           </Link>
         </View>
+      </View>
+      <View style={styles.postView}>
+        <FlatList
+          data={curPosts}
+          numColumns={3}
+          // horizontal
+          renderItem={({ item }) => (
+            <PostListComponent
+              profileName="James Landay"
+              photoPic={item[0]}
+              photoCaption={item[1]}
+              photoComments={[]}
+              profilePhoto="https://kvdmzxoxtrgkzrqxxomw.supabase.co/storage/v1/object/sign/profile_photos/james.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9maWxlX3Bob3Rvcy9qYW1lcy5qcGVnIiwiaWF0IjoxNzAxOTIwMDgxLCJleHAiOjE3MzM0NTYwODF9.5z1qMI8G25oM4gJffaLVdEIycsQ6lbppjRs3d7ImxLE&t=2023-12-07T03%3A34%3A41.674Z"
+            />
+          )}
+          keyExtractor={(item) => item[0]}
+        />
       </View>
     </View>
   );
@@ -118,6 +141,12 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito Bold",
     fontSize: 15,
   },
-  pictureSeparator: {},
-  pictureGrid: {},
+  postView: {
+    width: windowWidth,
+    height: windowHeight * 0.6,
+    //backgroundColor: "green",
+    justifyContent: "center",
+    //alignItems: "center",
+    //alignSelf: "flex-start",
+  },
 });
