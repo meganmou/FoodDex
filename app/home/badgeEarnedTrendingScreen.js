@@ -31,7 +31,7 @@ export default function badgeEarnedPage() {
   let [recipesCompleted, setRecipesCompleted] = useState(0);
   const badgeContext = useContext(BadgeContext);
 
-  // useContext
+  // useContext for badges
   if (params.cuisine === "Mexico") {
     [recipesCompleted, setRecipesCompleted] = badgeContext.mexicoCompleted;
   } else if (params.cuisine === "India") {
@@ -84,7 +84,10 @@ export default function badgeEarnedPage() {
         <View style={styles.buttons}>
           <Link
             href={{
-              pathname: "home/home-screen",
+              pathname: "home/makeTrendingPostScreen",
+              params: {
+                postPhoto: params.photo,
+              },
             }}
             asChild
           >

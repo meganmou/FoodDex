@@ -95,7 +95,7 @@ export default function FeedPostPage() {
           <TextInput
             style={styles.input}
             value={newComment}
-            placeholder="Add a comment"
+            placeholder="Add a comment and press enter"
             onChangeText={(text) => setNewComment(text)}
             onSubmitEditing={() => {
               const updatedComments = [

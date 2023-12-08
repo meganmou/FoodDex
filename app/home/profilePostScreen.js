@@ -63,8 +63,8 @@ export default function ProfilePostPage() {
             <Image
               source={
                 liked
-                  ? require("../../assets/like_regular_light.png")
-                  : require("../../assets/like_solid_light.png")
+                  ? require("../../assets/like_solid_light.png")
+                  : require("../../assets/like_regular_light.png")
               }
               style={{ height: 20, width: 20 }}
             />
@@ -96,7 +96,7 @@ export default function ProfilePostPage() {
           <TextInput
             style={styles.input}
             value={newComment}
-            placeholder="Add a comment"
+            placeholder="Add a comment and press enter"
             onChangeText={(text) => setNewComment(text)}
             onSubmitEditing={() => {
               const updatedComments = [

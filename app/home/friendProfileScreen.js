@@ -65,7 +65,8 @@ export default function FriendProfilePage() {
         <View style={styles.postView}>
           <FlatList
             data={postData}
-            horizontal
+            numColumns={3}
+            // horizontal
             renderItem={({ item }) => (
               <PostListComponent
                 profileName={item.profile_name}

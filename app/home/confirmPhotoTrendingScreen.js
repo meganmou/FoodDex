@@ -20,17 +20,6 @@ export default function confirmTrendingRecipePage() {
   const params = useLocalSearchParams();
 
   const badgeContext = useContext(BadgeContext);
-  if (params.cuisine === "Mexico") {
-    console.log(badgeContext.mexicoCompleted[0]);
-  } else if (params.cuisine === "India") {
-    console.log(badgeContext.indiaCompleted[0]);
-  } else if (params.cuisine === "Italy") {
-    console.log(badgeContext.italyCompleted[0]);
-  } else if (params.cuisine === "Turkey") {
-    console.log(badgeContext.turkeyCompleted[0]);
-  } else if (params.cuisine === "Japan") {
-    console.log(badgeContext.japanCompleted[0]);
-  }
 
   return (
     <View style={styles.container}>
