@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.8,
     justifyContent: "space-evenly",
     alignItems: "flex-start",
-    padding: 5,
+    padding: windowWidth * 0.02,
     //borderColor: "red",
     //borderWidth: 2,
   },
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   nameText: {
     fontFamily: "Nunito Bold",
     fontSize: 20,
-    paddingRight: 10,
+    paddingRight: windowWidth * 0.03,
   },
   cuisineText: {
     fontFamily: "Nunito Regular",

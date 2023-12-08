@@ -233,8 +233,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: windowWidth * 0.03,
+    paddingRight: windowWidth * 0.03,
     marginBottom: 20,
     backgroundColor: "#C2E1C1",
   },
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     height: windowHeight * 0.4,
     width: "100%",
-    padding: 10,
+    padding: windowWidth * 0.03,
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: 20,
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   },
   new: {
     width: "100%",
-    padding: 10,
+    padding: windowWidth * 0.03,
   },
   newCuisineView: {
     alignItems: "center",

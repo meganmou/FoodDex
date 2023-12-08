@@ -62,8 +62,8 @@ export default function FeedPostPage() {
             <Image
               source={
                 liked
-                  ? require("../../assets/like_regular_light.png")
-                  : require("../../assets/like_solid_light.png")
+                  ? require("../../assets/like_solid_light.png")
+                  : require("../../assets/like_regular_light.png")
               }
               style={{ height: 20, width: 20 }}
             />
@@ -118,12 +118,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: palette.white,
     flex: 1,
-    padding: 24,
+    padding: windowWidth * 0.065,
   },
   profileInfo: {
     flexDirection: "row",
     alignItems: "center",
-    paddingBottom: 10,
+    marginBottom: 10,
   },
   profileName: {
     fontFamily: "Dongle Regular",
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
+    padding: windowWidth * 0.01,
     width: windowWidth * 0.875,
     borderRadius: 10,
     borderColor: palette.darkGray,

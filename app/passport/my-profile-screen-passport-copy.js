@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: palette.white,
-    padding: 24,
+    padding: windowWidth * 0.065,
   },
   profileHeader: {
     alignItems: "center",

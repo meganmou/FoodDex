@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "gray",
     borderBottomWidth: StyleSheet.hairlineWidth,
     alignSelf: "center",
-    padding: 12,
-    paddingBottom: 20,
+    padding: windowWidth * 0.03,
+    paddingBottom: windowWidth * 0.06,
   },
   nameText: {
     fontFamily: "Dongle Regular",

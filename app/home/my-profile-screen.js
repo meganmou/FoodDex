@@ -13,6 +13,7 @@ import { useContext } from "react";
 import PostListComponent from "../../components/PostListComponent";
 import BadgeContext from "../../BadgeContext";
 import PostContext from "../../PostContext";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -98,6 +99,18 @@ export default function MyProfilePage() {
           keyExtractor={(item) => item[0]}
         />
       </View>
+      <View style={styles.buttonStyle}>
+        <Link
+          href={{
+            pathname: "home/uploadPhotoScreen",
+          }}
+          asChild
+        >
+          <Pressable>
+            <Text style={styles.buttonText}>Add Post</Text>
+          </Pressable>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -107,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: palette.white,
-    padding: 24,
+    padding: windowWidth * 0.065,
   },
   profileHeader: {
     alignItems: "center",
@@ -143,10 +156,25 @@ const styles = StyleSheet.create({
   },
   postView: {
     width: windowWidth,
-    height: windowHeight * 0.6,
+    height: windowHeight * 0.52,
     //backgroundColor: "green",
     justifyContent: "center",
     //alignItems: "center",
     //alignSelf: "flex-start",
+  },
+  buttonStyle: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: palette.olympicGreen,
+    width: windowWidth * 0.5,
+    height: windowHeight * 0.05,
+    borderRadius: 10,
+    margin: 5,
+    alignSelf: "center",
+  },
+  buttonText: {
+    color: palette.white,
+    fontFamily: "Nunito Bold",
+    fontSize: 20,
   },
 });

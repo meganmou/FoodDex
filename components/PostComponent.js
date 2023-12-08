@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
   postContainer: {
     backgroundColor: palette.white,
     //flex: 1,
-    paddingBottom: 20,
+    paddingBottom: windowWidth * 0.06,
     //alignItems: "center",
   },
   profileInfo: {
     flexDirection: "row",
     alignItems: "center",
-    paddingBottom: 10,
+    paddingBottom: windowWidth * 0.035,
   },
   profileName: {
     fontFamily: "Dongle Regular",
